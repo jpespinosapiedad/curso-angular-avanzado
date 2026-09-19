@@ -55,3 +55,5 @@
 	- para que al llamarlo no se confunda con una función: $duration().
 - Alias en signal inputs.
 	duration = input.required<number>({ alias: 'duration' });
+- linkedSignal.
+- model.
