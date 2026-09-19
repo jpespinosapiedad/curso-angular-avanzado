@@ -1,0 +1,57 @@
+* Curso Angular
+
+- Clonación del proyecto base.
+	git clone https://github.com/platzi/curso-angular-avanzado.git curso-angular
+- Instalación de dependencias.
+	npm i
+- Instalación del CLI de Angular.
+	npm install -g @angular/cli
+- Ejecutar Angular Live Development Server.
+	ng serve
+- Limpieza de imports no utilizados.
+	ng generate @angular/core:cleanup-unused-imports
+- Instalación de eslint.
+	ng add @angular-eslint/schematics
+	ng add @angular-eslint/schematics@19 (se tuvo que ajustar a @19 porque esa es la versión de Angular CLI)
+	ng add angular-eslint@19 (al final tuve que usar este comando)
+- Validar con eslint.
+	ng lint
+- Corrección automática con eslint.
+	ng lint --fix
+- Instalación de prettier (dependencia de Desarrollo)
+	npm i prettier -D
+- Modificación de packages.json, sección Scripts, para que se apliquen los cambios directamente en los archivos.
+	"format": "prettier --write ."
+- Ejecutar comando Prettier para dar formato a los componentes.
+	npm run format
+- Se podría generar un archivo en raíz para colocar/modificar reglas personalizadas para el equipo.
+	- .prettierrc
+- Instalación de paquetes para que eslint y Prettier trabajen en conjunto.
+	npm install prettier-eslint eslint-config-prettier eslint-plugin-prettier --save-dev
+
+- Generación de ambientes (Dev y Prod) en Angular
+	ng generate environments
+- Creación del environment staging.
+	- Copiar environment.development.ts y renombrarlo por environment.staging.ts
+	- Modificar angular.json en sus secciones (agregando la subsección staging):
+		projects\store\architect\build\configurations
+			- Agregar sólo la sección fileReplacements (parecida a la de development)
+		projects\store\architect\serve\configurations
+- Ejecutar ambiente staging en local.
+	ng serve -c staging
+- Compilar ambiente staging (para desplegar en el servidor correspondiente)
+	ng build -c staging
+- Migración a signal inputs.
+	- antes: 
+		@Input({required: true}) duration = 0;
+		this.duration;
+	- después: 
+		duration = input.required<number>();
+		this.duration();
+- Migración automática.
+	ng generate @angular/core:signal-input-migration
+- Prefijo a signal inputs.
+	$duration = input.required<number>();
+	- para que al llamarlo no se confunda con una función: $duration().
+- Alias en signal inputs.
+	duration = input.required<number>({ alias: 'duration' });
