@@ -69,7 +69,7 @@ export class CounterComponent implements OnInit, AfterViewInit, OnDestroy {
     console.log('message =>', this.$message());
     this.counterRef = window.setInterval(() => {
       console.log('run interval');
-      this.$counter.update((statePrev) => statePrev + 1);
+      this.$counter.update(statePrev => statePrev + 1);
     }, 1000);
   }
 

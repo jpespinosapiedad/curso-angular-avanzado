@@ -13,8 +13,7 @@
       min="0"
       max="1000"
       placeholder="Duration in seconds"
-      [(ngModel)]="duration"
-    />
+      [(ngModel)]="duration" />
   </p>
   @if (duration() > 0) {
     <app-counter [duration]="duration()" [(message)]="message" />
@@ -26,16 +25,14 @@
   <p>obsWithInit$: {{ $withInit() }}</p>
   <button
     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-    (click)="emitWithInit()"
-  >
+    (click)="emitWithInit()">
     Emit obsWithInit$
   </button>
 
   <p>obsWithoutInit$: {{ $withoutInit() }}</p>
   <button
     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-    (click)="emitWithoutInit()"
-  >
+    (click)="emitWithoutInit()">
     Emit obsWithoutInit$
   </button>
 </div>

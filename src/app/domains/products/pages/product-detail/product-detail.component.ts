@@ -21,7 +21,7 @@ export default class ProductDetailComponent implements OnInit {
   $product = signal<Product | null>(null);
   $cover = linkedSignal({
     source: this.$product,
-    computation: (product) => {
+    computation: product => {
       // computation: (product, previousValue)
       return product && product.images.length > 0 ? product.images[0] : '';
     },
@@ -59,7 +59,7 @@ export default class ProductDetailComponent implements OnInit {
     const slug = this.slug();
     if (slug) {
       this.productService.getOne({ product_slug: slug }).subscribe({
-        next: (product) => {
+        next: product => {
           this.$product.set(product);
         },
       });
