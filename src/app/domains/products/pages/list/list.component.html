@@ -1,10 +1,22 @@
 <div class="flex mt-5 flex-col md:flex-row md:space-x-4">
   <div class="w-full mb-4 md:w-56">
+    <button
+      (click)="resetCategories()"
+      class="bg-red-500 text-white px-4 py-2 rounded mr-2"
+    >
+      Reset Categories
+    </button>
+    <button
+      (click)="reloadCategories()"
+      class="bg-blue-500 text-white px-4 py-2 rounded"
+    >
+      Reload Categories
+    </button>
     <ul class="text-center md:text-left">
       <li>
         <a routerLink="/">All</a>
       </li>
-      @for (category of $categories(); track category) {
+      @for (category of categoriesResource.value(); track category) {
         <li>
           <a routerLink="/category/{{ category.slug }}">{{ category.name }}</a>
         </li>
