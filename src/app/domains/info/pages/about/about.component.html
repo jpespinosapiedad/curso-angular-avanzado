@@ -17,14 +17,25 @@
     />
   </p>
   @if (duration() > 0) {
-    <app-counter
-      [duration]="duration()"
-      [(message)]="message"
-      /*[message]="message()"*/
-      /*(changeMessage)="changeMessage($event)"*/
-    />
+    <app-counter [duration]="duration()" [(message)]="message" />
   }
   <div>
     <app-wave-audio audioUrl="assets/audio.mp3" />
   </div>
+
+  <p>obsWithInit$: {{ $withInit() }}</p>
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+    (click)="emitWithInit()"
+  >
+    Emit obsWithInit$
+  </button>
+
+  <p>obsWithoutInit$: {{ $withoutInit() }}</p>
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+    (click)="emitWithoutInit()"
+  >
+    Emit obsWithoutInit$
+  </button>
 </div>
